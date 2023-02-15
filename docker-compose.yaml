@@ -1,0 +1,18 @@
+version: '3.8'
+services:
+  database:
+    container_name: ${DATABASE_NAME}
+    image: postgres
+    restart: always
+    environment:
+      - POSTGRES_USER=${DATABASE_USER}
+      - POSTGRES_PASSWORD=${DATABASE_PASSWORD}
+  backend:
+    build: .
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://${DATABASE_NAME}:5432/${DATABASE_USER}
+      - SPRING_DATASOURCE_USERNAME=${DATABASE_USER}
+      - SPRING_DATASOURCE_PASSWORD=${DATABASE_PASSWORD}
+    restart: always
+    ports:
+      - "8080:8080"
