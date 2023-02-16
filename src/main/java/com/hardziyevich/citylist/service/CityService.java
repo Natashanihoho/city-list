@@ -12,8 +12,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
-import static java.util.stream.Collectors.toList;
-
 @Service
 @Transactional(readOnly = true)
 @RequiredArgsConstructor
@@ -26,13 +24,14 @@ public class CityService {
         return cityRepository.findAll(pageable)
                 .stream()
                 .map(cityMapper::mapToCityDto)
-                .collect(toList());
+                .toList();
     }
 
-    public CityReadDto findByName(String name) {
-        return cityRepository.findByNameIgnoreCase(name)
+    public List<CityReadDto> findAllByName(String name) {
+        return cityRepository.findByNameContainsIgnoreCase(name)
+                .stream()
                 .map(cityMapper::mapToCityDto)
-                .orElseThrow(() -> new EntityNotFoundException("City is not found by name: " + name));
+                .toList();
     }
 
     @Transactional

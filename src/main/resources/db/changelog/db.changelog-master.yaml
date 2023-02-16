@@ -1,9 +1,9 @@
 databaseChangeLog:
   - include:
-      file: db/changelog/db.changelog-1.0.sql
+      file: db/changelog/V20230216_create_table_city.sql
   - include:
-      file: db/changelog/db.changelog-2.0.sql
+      file: db/changelog/V20230216_create_table_users.sql
   - include:
-      file: db/changelog/db.changelog-3.0.sql
+      file: db/changelog/V20230216_insert_into_table_users.sql
   - include:
-      file: db/changelog/db.changelog-4.0.sql
+      file: db/changelog/V20230216_insert_into_table_city.sql

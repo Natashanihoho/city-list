@@ -10,6 +10,7 @@ Technical clarification
 - Database management system: PostgreSQL
 - Database migration: Liquibase
 - Docker
+- Swagger
 
 To run application:
 
@@ -27,22 +28,9 @@ Examples of endpoints:
 
 1. Authorization:
 
-POST: http://localhost:8080/api/login
+http://localhost:8080/api/login
 
-2. To find cities using pagination (by default will be first page of 10 cities):
+2. Swagger:
 
-GET: http://localhost:8080/api/v1/cities?page=1&size=2
+http://localhost:8080/api/swagger-ui/index.html
 
-3. To get city by name:
-
-GET: http://localhost:8080/api/v1/cities/minsk
-
-4. To update name or photo of city (only for users with ROLE_ALLOW_EDIT):
-
-PATCH: http://localhost:8080/api/v1/cities?id=1
-
-JSON Body:
-
-{
-  "name": "updatedName"
-}
