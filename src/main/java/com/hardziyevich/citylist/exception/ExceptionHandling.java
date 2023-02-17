@@ -11,7 +11,7 @@ import static org.springframework.http.HttpStatus.NOT_FOUND;
 import static org.springframework.http.HttpStatus.BAD_REQUEST;
 
 @ControllerAdvice
-public class Handler {
+public class ExceptionHandling {
 
     @ExceptionHandler(EntityNotFoundException.class)
     public ResponseEntity<String> entityNotFound(EntityNotFoundException exception) {
