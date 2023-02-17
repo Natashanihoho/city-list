@@ -6,6 +6,7 @@ import com.hardziyevich.citylist.exception.EntityNotFoundException;
 import com.hardziyevich.citylist.mapper.CityMapper;
 import com.hardziyevich.citylist.repository.CityRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -20,11 +21,9 @@ public class CityService {
     private final CityRepository cityRepository;
     private final CityMapper cityMapper;
 
-    public List<CityReadDto> findAll(Pageable pageable) {
+    public Page<CityReadDto> findAll(Pageable pageable) {
         return cityRepository.findAll(pageable)
-                .stream()
-                .map(cityMapper::mapToCityDto)
-                .toList();
+                .map(cityMapper::mapToCityDto);
     }
 
     public List<CityReadDto> findAllByName(String name) {

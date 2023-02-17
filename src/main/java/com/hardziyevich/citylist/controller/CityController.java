@@ -8,6 +8,7 @@ import io.swagger.v3.oas.annotations.info.Info;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import lombok.RequiredArgsConstructor;
 import org.springdoc.api.annotations.ParameterObject;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.http.ResponseEntity;
@@ -33,7 +34,7 @@ public class CityController {
     private final CityService cityService;
 
     @GetMapping
-    public ResponseEntity<List<CityReadDto>> findAll(@ParameterObject @PageableDefault Pageable pageable) {
+    public ResponseEntity<Page<CityReadDto>> findAll(@ParameterObject @PageableDefault Pageable pageable) {
         return ResponseEntity.ok(cityService.findAll(pageable));
     }
 
