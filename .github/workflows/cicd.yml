@@ -29,3 +29,8 @@ jobs:
         DOCKER_PASSWORD: ${{secrets.DOCKER_PASSWORD}}
       run: 
         docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
+    - name: Docker push
+      run:
+        docker build -t ${{secrets.REPO}} .
+        docker push ${{secrets.DOCKER_USER}}/${{secrets.REPO}}
+      
