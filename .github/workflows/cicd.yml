@@ -23,3 +23,9 @@ jobs:
       run: chmod +x ./gradlew
     - name: Build with Gradle Wrapper
       run: ./gradlew build
+    - name: Docker Sign in
+      env: 
+        DOCKER_USER: ${{secrets.DOCKER_USER}}
+        DOCKER_PASSWORD: ${{secrets.DOCKER_PASSWORD}}
+      run: 
+        docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
