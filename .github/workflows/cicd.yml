@@ -36,11 +36,9 @@ jobs:
       run:
         docker push ${{secrets.DOCKER_USER}}/${{secrets.REPO}}:latest 
     - name: Build and Deploy
-      env: 
-          PRIVATE_KEY: ${{secrets.EC2_SECRET}}
-          HOSTNAME: ${{secrets.HOSTNAME}}
-          USER_NAME: ${{secrets.USER_NAME}}
-      run: 
-       echo "$PRIVATE_KEY" > private_key && chmod 400 private_key
-       ssh -i private_key ${USER_NAME}@${HOSTNAME}
+      uses: appleboy/ssh-action@v1.0.3
+      with:
+        host: ${{secrets.HOSTNAME}}
+        username: ${{secrets.USER_NAME}}
+        key: ${{secrets.EC2_SECRET}}
       
