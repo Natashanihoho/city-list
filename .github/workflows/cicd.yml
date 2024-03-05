@@ -41,6 +41,6 @@ jobs:
         host: ${{secrets.HOSTNAME}}
         username: ${{secrets.USER_NAME}}
         key: ${{secrets.EC2_SECRET}}
-      script: 
-       docker login
+        script: 
+         docker login
       
