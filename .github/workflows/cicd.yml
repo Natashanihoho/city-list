@@ -24,11 +24,8 @@ jobs:
     - name: Build with Gradle Wrapper
       run: ./gradlew build
     - name: Docker Sign in
-      env: 
-        DOCKER_USER: ${{secrets.DOCKER_USER}}
-        DOCKER_PASSWORD: ${{secrets.DOCKER_PASSWORD}}
       run: 
-        docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
+        docker login -u ${{secrets.DOCKER_USER}} -p ${{secrets.DOCKER_PASSWORD}}
     - name: Build Docker image with the latest tag
       run: 
         docker build -f Dockerfile -t ${{secrets.DOCKER_USER}}/${{secrets.REPO}}:latest .    
@@ -42,5 +39,5 @@ jobs:
         username: ${{secrets.USER_NAME}}
         key: ${{secrets.EC2_SECRET}}
         script: 
-         docker login
+         sudo docker login -u ${{secrets.DOCKER_USER}} -p ${{secrets.DOCKER_PASSWORD}}
       
