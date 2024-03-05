@@ -40,4 +40,6 @@ jobs:
         key: ${{secrets.EC2_SECRET}}
         script: 
          sudo docker login -u ${{secrets.DOCKER_USER}} -p ${{secrets.DOCKER_PASSWORD}}
+         sudo docker pull ${{secrets.DOCKER_USER}}/${{secrets.REPO}}
+         sudo docker image list
       
