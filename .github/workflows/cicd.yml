@@ -42,7 +42,7 @@ jobs:
          sudo docker login -u ${{secrets.DOCKER_USER}} -p ${{secrets.DOCKER_PASSWORD}}
          sudo docker stop backend
          sudo docker rm backend
-         sudo docker rmi ${{secrets.DOCKER_USER}}/${{secrets.REPO}}
-         sudo docker pull ${{secrets.DOCKER_USER}}/${{secrets.REPO}}
-         sudo docker run -d --name backend -p 80:8080 ${{secrets.ENV}} ${{secrets.DOCKER_USER}}/${{secrets.REPO}} 
+         sudo docker rmi ${{secrets.DOCKER_USER}}/${{secrets.REPO}}:latest
+         sudo docker pull ${{secrets.DOCKER_USER}}/${{secrets.REPO}}:latest
+         sudo docker run -d --name backend -p 80:8080 ${{secrets.ENV}} ${{secrets.DOCKER_USER}}/${{secrets.REPO}}:latest 
       
