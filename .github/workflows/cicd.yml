@@ -44,5 +44,5 @@ jobs:
          sudo docker rm backend
          sudo docker rmi ${{secrets.DOCKER_USER}}/${{secrets.REPO}}
          sudo docker pull ${{secrets.DOCKER_USER}}/${{secrets.REPO}}
-         docker run --name backend -p 80:8080 ${{secrets.ENV}} ${{secrets.DOCKER_USER}}/${{secrets.REPO}} 
+         sudo docker run --name backend -p 80:8080 ${{secrets.ENV}} ${{secrets.DOCKER_USER}}/${{secrets.REPO}} 
       
